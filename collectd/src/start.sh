@@ -1,0 +1,4 @@
+#!/bin/bash
+#cp /etc/collectd/configs/collectd.$CONFIG_TYPE.conf.tpl /etc/collectd/collectd.conf.tpl
+#envtpl /etc/collectd/collectd.conf.tpl
+collectd -f
