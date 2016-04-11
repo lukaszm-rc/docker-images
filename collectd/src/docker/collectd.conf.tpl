@@ -12,8 +12,10 @@
 # Global settings for the daemon.                                            #
 ##############################################################################
 
-#Hostname "localhost"
-FQDNLookup true
+Hostname "{{ .Env "COLLECTD_HOST" }}"
+FQDNLookup false
+Interval {{ .Env "COLLECTD_INTERVAL" }}
+
 #BaseDir "/var/lib/collectd"
 #PluginDir "/usr/lib/collectd"
 #TypesDB "/usr/share/collectd/types.db" "/etc/collectd/my_types.db"
@@ -94,7 +96,7 @@ LoadPlugin disk
 #LoadPlugin email
 LoadPlugin entropy
 LoadPlugin ethstat
-#LoadPlugin exec
+LoadPlugin exec
 LoadPlugin filecount
 LoadPlugin fscache
 #LoadPlugin gmond
@@ -423,11 +425,9 @@ LoadPlugin users
 #	MappedOnly false
 #</Plugin>
 
-#<Plugin exec>
-#	Exec user "/path/to/exec"
-#	Exec "user:group" "/path/to/exec"
-#	NotificationExec user "/path/to/exec"
-#</Plugin>
+<Plugin exec>                                                                                                                                                                                                                                 
+  Exec "collectd-docker-collector" "/usr/bin/collectd-docker-collector" "-endpoint" "unix:///var/run/docker.sock" "-host" "{{ .Env "COLLECTD_HOST" }}" "-interval" "{{ .Env "COLLECTD_INTERVAL" }}"                                           
+</Plugin>
 
 #<Plugin filecount>
 #	<Directory "/path/to/dir">
@@ -601,7 +601,7 @@ LoadPlugin users
 
 <Plugin network>
 #	# client setup:
-	Server "dev.lh" "25826"
+	Server {{ .Env "INFLUXDB_HOST" }} {{ .Env "INFLUXDB_PORT" }}
 #	<Server "dev.lh" "25826">
 #		SecurityLevel Encrypt
 #		Username "user"

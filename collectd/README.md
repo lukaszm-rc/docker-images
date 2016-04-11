@@ -17,5 +17,8 @@ This preset will run single standalone mongodb instance on port **1337** (to avo
 
 #### Example
 ```
-docker run -dit --net=host --restart=on-failure:10  --name="collectd" lukaszm/collectd:latest
+docker run -dit --net=host -e INFLUXDB_HOST=$CLUSTER_INFLUXDB -e COLLECTD_HOST=$HOSTNAME --restart=on-failure:10  --name="collectd" lukaszm/collectd:latest
 ```
+docker run -d -v /var/run/docker.sock:/var/run/docker.sock \
+    -e GRAPHITE_HOST=<graphite host> \
+    bobrik/collectd-docker
