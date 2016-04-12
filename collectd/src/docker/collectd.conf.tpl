@@ -53,15 +53,15 @@ ReadThreads 5
 # accessed.                                                                  #
 ##############################################################################
 
-#LoadPlugin logfile
-LoadPlugin syslog
+LoadPlugin logfile
+#LoadPlugin syslog
 
-#<Plugin logfile>
-#	LogLevel "info"
-#	File STDOUT
-#	Timestamp true
-#	PrintSeverity false
-#</Plugin>
+<Plugin logfile>
+	LogLevel "info"
+	File STDOUT
+	Timestamp true
+	PrintSeverity false
+</Plugin>
 
 <Plugin syslog>
 	LogLevel info

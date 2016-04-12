@@ -167,18 +167,18 @@ reporting-disabled = false
 ### Controls the listener for collectd data.
 ###
 [collectd]
-  enabled = false
-  # bind-address = ":25826"
-  # database = "collectd"
+  enabled = true
+  bind-address = ":25826"
+  database = "cluster-monitor"
   # retention-policy = ""
-  # typesdb = "/usr/share/collectd/types.db"
+  typesdb = "/usr/share/collectd/types.db"
 
   # These next lines control how batching works. You should have this enabled
   # otherwise you could get dropped metrics or poor performance. Batching
   # will buffer points in memory if you have many coming in.
 
-  # batch-size = 1000 # will flush if this many points get buffered
-  # batch-timeout = "1s" # will flush at least this often even if we haven't hit buffer limit
+  batch-size = 1000 # will flush if this many points get buffered
+  batch-timeout = "5s" # will flush at least this often even if we haven't hit buffer limit
 
 ###
 ### [opentsdb]

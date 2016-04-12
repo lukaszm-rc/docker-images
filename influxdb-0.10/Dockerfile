@@ -15,6 +15,8 @@ ENV SSL_CERT **None**
 EXPOSE 8083 
 # HTTP API 
 EXPOSE 8086
+
+EXPOSE 25826
 # Raft port (for clustering, don't expose publicly!) 
 #EXPOSE 8090 
 # Protobuf port (for clustering, don't expose publicly!)

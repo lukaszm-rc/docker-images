@@ -5,8 +5,17 @@
 ```
 docker pull lukaszm/collectd
 ```
+# Configuration
+Set environment variables
+```
+export CLUSTER_INFLUXDB_HOST='localhost'
+export CLUSTER_INFLUXDB_PORT='25826'
+export COLLECTD_INTERVAL='5'
+```
 
 # Running container
+
+
 ```
 docker run \
 -d \
