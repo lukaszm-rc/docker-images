@@ -391,9 +391,9 @@ LoadPlugin users
 	FSType cgroup
 	IgnoreSelected true
 
-#	ReportByDevice false
+	ReportByDevice true
 #	ReportReserved false
-#	ReportInodes false
+	ReportInodes true
 
 #	ValuesAbsolute true
 #	ValuesPercentage false
@@ -601,7 +601,7 @@ LoadPlugin users
 
 <Plugin network>
 #	# client setup:
-	Server {{ .Env "INFLUXDB_HOST" }} {{ .Env "INFLUXDB_PORT" }}
+	Server {{ .Env "INFLUXDB_HOST" }} {{ .Env "INFLUXDB_COLLECTD_PORT" }}
 #	<Server "dev.lh" "25826">
 #		SecurityLevel Encrypt
 #		Username "user"
