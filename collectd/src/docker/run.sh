@@ -19,4 +19,4 @@ fi
 useradd -g "${GROUP}" collectd-docker-collector
 
 exec reefer -t /etc/collectd/collectd.conf.tpl:/tmp/collectd.conf \
-  collectd -f -C /tmp/collectd.conf "$@" > /dev/null
+  collectd -f -C /tmp/collectd.conf "$@"
